@@ -35,12 +35,7 @@ export default async function asynchandler(req, res) {
     }
   `;
 
-  const result = await graphQLClient.request(query, {
-    name: req.body.name,
-    email: req.body.email,
-    comment: req.body.comment,
-    slug: req.body.slug,
-  });
+  const result = await graphQLClient.request(query, req.body);
 
   return res.status(200).send(result);
 }
